@@ -20,38 +20,37 @@ public class StudentController {
 	@Autowired
 	private StudentService studentService;
 
-	@PostMapping
+	@PostMapping("/student/add")
 	public String addStudent(@RequestBody Student student) {
-
 		logger.info("Inside add Student Post Mapping");
 		return studentService.addStudent(student);
 	}
 
-	@PostMapping("/addAll")
-	public String addStudents(@RequestBody List<Student> students) {
+	@PostMapping("/student/addAll")
+	public String addAllStudents(@RequestBody List<Student> students) {
 
-		return studentService.addStudents(students);
+		return studentService.addAllStudents(students);
 	}
 
-	@DeleteMapping("/{roll}")
+	@DeleteMapping("/student/{roll}")
 	public String deleteStudent(@PathVariable int roll) {
 
 		return studentService.deleteStudent(roll);
 	}
 
-	@PutMapping
+	@PutMapping("/student")
 	public String updateStudent(@RequestBody Student student) {
 
 		return studentService.updateStudent(student);
 	}
 
-	@GetMapping("/{roll}")
+	@GetMapping("/student/{roll}")
 	public Student getStudent(@PathVariable int roll) {
 
 		return studentService.getStudent(roll);
 	}
 
-	@GetMapping
+	@GetMapping("/student")
 	public List<Student> getAllStudents()
 	{
 		logger.info("Inside get All Students!!");

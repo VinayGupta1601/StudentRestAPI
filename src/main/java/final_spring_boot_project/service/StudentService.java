@@ -16,30 +16,30 @@ public class StudentService {
     @Autowired
     private StudentDAO studentDAO;
 
-    public String addStudent(Student student) {
+    public Student addStudent(Student student) {
         log.info("Inside addStudent method.");
         studentDAO.save(student);
         //log.info("Student Saved.");
-        return "Student added:" + student.getRoll();
+        return student;
     }
 
-    public String addAllStudents(List<Student> students) {
+    public List<Student> addAllStudents(List<Student> students) {
         log.info("Inside addAllStudents method.");
         studentDAO.saveAll(students);
-        return "All Student added ";
+        return students;
     }
 
-    public String deleteStudent(int roll) {
+    public Student deleteStudent(int roll) {
         log.info("Inside deleteStudent by roll method.");
         Student student = studentDAO.getById(roll);
         studentDAO.delete(student);
-        return "Roll Number deleted :" + roll;
+        return student;
     }
 
-    public String updateStudent(Student student) {
+    public Student updateStudent(Student student) {
         log.info("Inside updateStudent method.");
         studentDAO.save(student);
-        return "Roll Number Updated :" + student.getRoll();
+        return student;
     }
 
     public Student getStudent(int roll) {
